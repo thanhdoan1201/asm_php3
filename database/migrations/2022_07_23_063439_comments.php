@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('details_bds', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('lbds_id');
-            $table->string('name_bds');
-            $table->string('location');
-            $table->string('price');
-            $table->string('description',1000);
-            $table->string('contact');
-
-        });
-    }
+            $table->unsignedBigInteger('id_bds');
+            $table->unsignedBigInteger('id_users');
+            $table->string('comments',1000);
+            $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.

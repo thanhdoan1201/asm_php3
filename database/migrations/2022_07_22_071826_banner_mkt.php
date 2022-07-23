@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('banner_mkt', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_news');
-            $table->foreign('id_news')->references('id')->on('news');
             $table->string('name_banner');
             $table->string('image');
         });
