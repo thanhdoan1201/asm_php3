@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
+    private $v;
+    public function __construct()
+    {
+        $this->v = [];
+    }
     //News
     public function news()
     {

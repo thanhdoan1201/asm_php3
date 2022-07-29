@@ -22,7 +22,7 @@ class AdminController extends Controller
     {
         $users = new AdminModel();
         $this->v['list'] = $users->loadListWithPager();
-        $this->v['title'] = 'Người dùng';
+        $this->v['title'] = 'Danh Sách Người dùng';
         return view("admin/user.index", $this->v);
     }
     public function add(UserRequest $request)

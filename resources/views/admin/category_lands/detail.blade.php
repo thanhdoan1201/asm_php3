@@ -1,9 +1,9 @@
 @extends('templates.layoutadmin')
-@section('title', $_title)
+@section('title', $title)
 @section('content')
     <!-- Main content -->
     <section class="content appTuyenSinh">
-        <link rel="stylesheet" href="{{ asset('public_admin/default/bower_components/select2/dist/css/select2.min.css')}} ">
+        <link rel="stylesheet" href="{{ asset('default/bower_components/select2/dist/css/select2.min.css')}} ">
         <style>
             .select2-container--default .select2-selection--single, .select2-selection .select2-selection--single {
                 padding: 3px 0px;
@@ -68,53 +68,20 @@
                 </button>
             </div>
     @endif
-    <h2 style="font-style: oblique;">{{$title}}</h2>
+
     <!-- Phần nội dung riêng của action  -->
-        <form class="form-horizontal " action="" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal " action="{{route('route_BackEnd_Categorylands_Update',['id'=>request()->route('id')])}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="ten_de_thi" class="col-md-3 col-sm-4 control-label">Tên người dùng <span class="text-danger">(*)</span></label>
-
+                    <div class="form-group">
+                            <label for="loai_bat_dong_san" class="col-md-3 col-sm-4 control-label">Loại Bất Động Sản <span class="text-danger">(*)</span></label>
                             <div class="col-md-9 col-sm-8">
-                                <input type="text" name="name" id="name" class="form-control" value="@isset($request['name']){{ $request['name'] }}@endisset">
+                                <input type="text" name="name_lbds" id="name_lbds" class="form-control" value="{{$objItem->name_lbds}}">
                                 <span id="mes_sdt"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Email <span class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="text" name="email" id="email" class="form-control" value="@isset($request['email']){{ $request['email'] }}@endisset">
-                                <span id="mes_sdt"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Mật khẩu <span class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="password" name="password" id="password" class="form-control" value="@isset($request['password']){{ $request['password'] }}@endisset">
-                                <span id="mes_sdt"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Số điện thoại <span class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="text" name="phone" id="phone" class="form-control" value="@isset($request['phone']){{ $request['phone'] }}@endisset">
-                                <span id="mes_sdt"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Quyền <span class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="radio" name="role" id="role" value=0>
-                                <label for="">User</label>
-                                <input type="radio" name="role" id="role" value=1>
-                                <label for="">Admin</label>
-                                <span id="mes_sdt"></span>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -122,7 +89,7 @@
             <!-- /.box-body -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary"> Save</button>
-                <a href="{{route('route_BackEnd_Users_List')}}" class="btn btn-default">Cancel</a>
+                <a href="{{route('route_BackEnd_Categorylands_List')}}" class="btn btn-default">Cancel</a>
             </div>
             <!-- /.box-footer -->
         </form>

@@ -68,7 +68,7 @@
                 </button>
             </div>
     @endif
-
+    <h2 style="font-style: oblique;">{{$title}}</h2>
     <!-- Phần nội dung riêng của action  -->
         <form class="form-horizontal " action="" method="post" enctype="multipart/form-data">
             @csrf

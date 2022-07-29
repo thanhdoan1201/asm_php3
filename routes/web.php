@@ -34,9 +34,9 @@ Route::middleware(['auth'])->group(function (){
 
     //Category_lands
     Route::get('/admin/categorylands','App\Http\Controllers\Admin\LandsController@categorylands')->name('route_BackEnd_Categorylands_List');
-    Route::match(['get','post'],'/admin/category/add', 'App\Http\Controllers\Admin\LandsControllerr@categorylands_add')->name('route_BackEnd_Categorylands_Add');
-    Route::get('/admin/categorynews/detail/{id}', 'App\Http\Controllers\Admin\LandsController@categorylands_detail')->name('route_BackEnd_Categorylands_Detail');
-    Route::post('/admin/categorynews/update/{id}', 'App\Http\Controllers\Admin\LandsController@categorylands_update')->name('route_BackEnd_Categorylands_Update');
+    Route::match(['get','post'],'/admin/category/add', 'App\Http\Controllers\Admin\LandsController@categorylands_add')->name('route_BackEnd_Categorylands_Add');
+    Route::get('/admin/categorylands/detail/{id}', 'App\Http\Controllers\Admin\LandsController@categorylands_detail')->name('route_BackEnd_Categorylands_Detail');
+    Route::post('/admin/categorylands/update/{id}', 'App\Http\Controllers\Admin\LandsController@categorylands_update')->name('route_BackEnd_Categorylands_Update');
 
     //Land
     Route::get('/admin/lands','App\Http\Controllers\Admin\LandsController@lands')->name('route_BackEnd_Lands_List');

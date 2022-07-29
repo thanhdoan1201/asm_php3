@@ -204,6 +204,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                         <a href="#"><i class="fa fa-user"></i> <span>Người dùng</span></a>
                         <ul class="treeview-menu">
                             <li><a href="{{route('route_BackEnd_Users_List')}}"><i class="fa fa-circle-o"></i>Danh Sách Người dùng</a></li>
+                            <li><a href="{{route('route_BackEnd_Users_Add')}}"><i class="fa fa-circle-o"></i>Thêm Người dùng</a></li>
                         </ul>
                     </li>
                     <li class=" active menu-open ">
