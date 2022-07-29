@@ -22,43 +22,43 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-            $dataloai= [
-                'id'=>0,
-                'name_lbds' => 'Dat nghia trang',
-            ];
-        DB::table('lbds')->insert($dataloai);
-            $databds= [
-                'lbds_id' => 0,
-                'name_bds' => 'Dat nghia trang tai Long Bien',
-                'location' => 'Long Bien',
-                'price' => 100000000,
-                'description' => 'Mo ta test',
-                'contact' => '012345678'
-            ];
-        DB::table('details_bds')->insert($databds);
-            $datauser= [
-                'name' => 'Nguyen Van A',
-                'email' => 'anv0002@gmail.com',
-                'phone'=>'0123456798',
-                'role'=>'1',
-                'password' => Hash::make('123456') 
-            ];
-        DB::table('users')->insert($datauser);
-        $datacaterogy= [
-                'name_category_news'=>'Gia Dat',
-            ];
-        DB::table('category_news')->insert( $datacaterogy);
-        $banner_mkt= [
-            'id_news' => 0,
-            'name_banner'=>'Gia Dat',
-            'image'=>'123456.png'
+        $dataloai = [
+            'id' => 0,
+            'name_lbds' => 'Dat nghia trang',
         ];
-    DB::table('banner_mkt')->insert( $banner_mkt);
-    $news= [
-        'id_category_news'=>0,
-        'title_news'=>'bai viet so 1',
-        'content_news'=>'noi dung bai viet 1 , tesst',
-    ];
-DB::table('news')->insert( $news);
+        DB::table('lbds')->insert($dataloai);
+        $databds = [
+            'lbds_id' => 0,
+            'name_bds' => 'Dat nghia trang tai Long Bien',
+            'location' => 'Long Bien',
+            'price' => 100000000,
+            'description' => 'Mo ta test',
+            'contact' => '012345678'
+        ];
+        DB::table('details_bds')->insert($databds);
+        $datauser = [
+            'name' => 'Nguyen Van A',
+            'email' => 'anv0002@gmail.com',
+            'phone' => '0123456798',
+            'role' => '1',
+            'password' => Hash::make('123456')
+        ];
+        DB::table('users')->insert($datauser);
+        $datacaterogy = [
+            'name_category_news' => 'Gia Dat',
+        ];
+        DB::table('category_news')->insert($datacaterogy);
+        $banner_mkt = [
+            'id_news' => 0,
+            'name_banner' => 'Gia Dat',
+            'image' => '123456.png'
+        ];
+        DB::table('banner_mkt')->insert($banner_mkt);
+        $news = [
+            'id_category_news' => 0,
+            'title_news' => 'bai viet so 1',
+            'content_news' => 'noi dung bai viet 1 , tesst',
+        ];
+        DB::table('news')->insert($news);
     }
 }
