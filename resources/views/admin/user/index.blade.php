@@ -79,7 +79,7 @@
                     <div class="form-group">
                         <button type="submit" name="btnSearch" class="btn btn-primary btn-sm "><i class="fa fa-search" style="color:white;"></i> Search
                         </button>
-                        <a href="{{ url('/user') }}" class="btn btn-default btn-sm "><i class="fa fa-remove"></i>
+                        <a href="{{ route('route_BackEnd_Users_List')}}" class="btn btn-default btn-sm "><i class="fa fa-remove"></i>
                             Clear </a>
                         <a href="{{ route('route_BackEnd_Users_Add')}}" class="btn btn-info btn-sm"><i class="fa fa-user-plus" style="color:white;"></i>
                             Add new</a>
@@ -151,17 +151,20 @@
                         </th>
                         <th class="text-center">Điện thoại</th>
                         <th class="text-center">Quyền</th>
+                        <th class="text-center">Hành Động</th>
                     </tr>
 
                     @foreach ($list as $a)
                     <tr>
                         {{-- <td><input type="checkbox" name="chk_hv[]" class="chk_hv" id="chk_hv_{{$item->id}}" value="{{$item->id}}"> </td>--}}
                         <td class="text-center">{{$a->id}}</td>
-                        <td class="text-center">{{$a->name}}<a style="color:#333333;font-weight: bold;" href="{{ route("route_BackEnd_Users_Detail",['id'=>request()->route('id')]) }}" style="white-space:unset;text-align: justify;"> <i class="fa fa-edit"></i></a></td>
+                        <td class="text-center">{{$a->name}}<a style="color:#333333;font-weight: bold;" href="{{route('route_BackEnd_Users_Detail',$a->id)}}" style="white-space:unset;text-align: justify;"> <i class="fa fa-edit"></i></a></td>
                         <td class="text-center">{{$a->email}}</td>
                         <td class="text-center">{{$a->phone}}</td>
                         <td class="text-center">{{$a->role}}</td>
-
+                        <td class="text-center"><a href=""><button type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></button></a></td>
                     </tr>
                     @endforeach
 

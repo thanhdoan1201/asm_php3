@@ -156,7 +156,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/img/no-avartar.png" class="user-image" alt="User Image">
+                                <img src="/public_admin/img/no-avartar.png" class="user-image" alt="User Image">
                                 <span class="hidden-xs"> {{$objUser->name}} </span>
                             </a>
                             <ul class="dropdown-menu">
@@ -187,7 +187,7 @@ $objUser = \Illuminate\Support\Facades\Auth::user();
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/img/no-avartar.png" class="img-circle" alt="User Image">
+                        <img src="/public_admin/img/no-avartar.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>{{$objUser->name}} </p>

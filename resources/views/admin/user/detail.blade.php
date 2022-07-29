@@ -1,5 +1,5 @@
 @extends('templates.layoutadmin')
-@section('title', '$title')
+@section('title', $title)
 @section('content')
     <!-- Main content -->
     <section class="content appTuyenSinh">
@@ -70,7 +70,7 @@
     @endif
 
     <!-- Phần nội dung riêng của action  -->
-        <form class="form-horizontal " action="{{ route("route_BackEnd_Users_Update",['id'=>request()->route('id')]) }}" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal " action="{{route('route_BackEnd_Users_Update',['id'=>request()->route('id')]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="box-body">
                 <div class="row">
@@ -91,18 +91,25 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="phone" class="col-md-3 col-sm-4 control-label">Phone <span class="text-danger">(*)</span></label>
+                            <div class="col-md-9 col-sm-8">
+                                <input type="text" name="phone" id="phone" class="form-control" value="{{$objItem->phone}}">
+                                <span id="mes_sdt"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" hidden>
                             <label for="email" class="col-md-3 col-sm-4 control-label">Mật khẩu <span class="text-danger">(*)</span></label>
                             <div class="col-md-9 col-sm-8">
-                                <input type="password" name="password" id="password" class="form-control" value="@isset($request['password']){{ $request['password'] }}@endisset">
+                                <input type="password" name="password" id="password" class="form-control" value="@isset($request['password']){{ $request['password'] }}@endisset" readonly>
                                 <span id="mes_sdt"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-md-3 col-sm-4 control-label">Quyền <span class="text-danger">(*)</span></label>
                             <div class="col-md-9 col-sm-8">
-                                <input type="radio" name="role" id="role" value=0>
+                                <input type="radio" name="role" id="role" value="0" <?php if ($objItem->role == '0') echo 'checked="checked"'; ?>>
                                 <label for="">User</label>
-                                <input type="radio" name="role" id="role" value=1>
+                                <input type="radio" name="role" id="role" value="1" <?php if ($objItem->role == '1') echo 'checked="checked"'; ?>>
                                 <label for="">Admin</label>
                                 <span id="mes_sdt"></span>
                             </div>
@@ -114,7 +121,7 @@
             <!-- /.box-body -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary"> Save</button>
-                <a href="" class="btn btn-default">Cancel</a>
+                <a href="{{route('route_BackEnd_Users_List')}}" class="btn btn-default">Cancel</a>
             </div>
             <!-- /.box-footer -->
         </form>
