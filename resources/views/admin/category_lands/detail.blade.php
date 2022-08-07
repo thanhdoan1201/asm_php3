@@ -68,7 +68,9 @@
                 </button>
             </div>
     @endif
-
+    <div>
+        <h2 style="font-style: oblique;">{{$title}}</h2>
+    </div>
     <!-- Phần nội dung riêng của action  -->
         <form class="form-horizontal " action="{{route('route_BackEnd_Categorylands_Update',['id'=>request()->route('id')])}}" method="post" enctype="multipart/form-data">
             @csrf

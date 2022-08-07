@@ -10,12 +10,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="html 5 template">
     <meta name="author" content="">
-    <title>Find Houses - HTML5 Template</title>
+    <title>Bất Động Sản - 3 Miền</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="/public_fontend/css/jquery-ui.css">
     <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet"> -->
     <!-- Slider Revolution CSS Files -->
     <link rel="stylesheet" href="/public_fontend/revolution/css/settings.css">
     <link rel="stylesheet" href="/public_fontend/revolution/css/layers.css">
@@ -42,6 +42,9 @@
     <link rel="stylesheet" href="/public_fontend/css/slick.css">
     <link rel="stylesheet" href="/public_fontend/css/styles.css">
     <link rel="stylesheet" id="color" href="/public_fontend/css/default.css">
+
+
+
 </head>
 
 <body class="int_dark_bg h20">
@@ -58,7 +61,7 @@
                     <div class="left-side">
                         <!-- Logo -->
                         <div id="logo">
-                            <a href="index.html"><img src="/public_admin/img/logo.png" data-sticky-logo="/public_admin/img/logo.png" alt=""></a>
+                            <a href="/"><img src="/public_admin/img/logo.png" data-sticky-logo="/public_admin/img/logo.png" alt=""></a>
                         </div>
                         <!-- Mobile Navigation -->
                         <div class="mmenu-trigger">
@@ -71,25 +74,23 @@
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1 black">
                             <ul id="responsive">
-                                <li><a href="#">Trang chủ</a>
-                                <li><a href="#">Bất động sản</a>
+                                <li><a href="/">Trang chủ</a>
+                                <li><a href="/lands">Bất Động Sản</a>
                                     <ul>
-                                        <li><a href="#">Loại 1</a></li>
-                                        <li><a href="#">Loại 2</a></li>
-                                        <li><a href="#">Loại 3</a></li>
-                                        <li><a href="#">Loại 4</a></li>
+                                        @foreach ($listbds as $list )
+                                        <li><a href="/lands?category={{$list->id}}">{{$list->name_lbds}}</a></li>
+                                        @endforeach
                                     </ul>
-                                <li><a href="#">Tin tức</a>
+                                <li><a href="/news">Tin tức</a>
                                     <ul>
-                                        <li><a href="#">Loại 1</a></li>
-                                        <li><a href="#">Loại 2</a></li>
-                                        <li><a href="#">Loại 3</a></li>
-                                        <li><a href="#">Loại 4</a></li>
+                                        @foreach ($listbds as $list )
+                                        <li><a href="/news?category={{$list->id}}">{{$list->name_lbds}}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li><a href="contact-us.html">Liên hệ</a></li>
-                                <li class="d-none d-xl-none d-block d-lg-block"><a href="login.html">Đăng Nhập</a></li>
-                                <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Đăng Ký</a></li>
+                                <li><a href="/contact">Liên hệ</a></li>
+                                <li class="d-none d-xl-none d-block d-lg-block"><a href="/login">Đăng Nhập</a></li>
+                                <li class="d-none d-xl-none d-block d-lg-block"><a href="/register">Đăng Ký</a></li>
                             </ul>
                         </nav>
                         <!-- Main Navigation / End -->
@@ -109,12 +110,12 @@
                     <!-- Right Side Content / End -->
                     <div class="header-user-menu user-menu add">
                         <div class="header-user-name">
-                            <span><img src="/public_admin/img/no-avartar.png" alt=""></span>Xin chào, 
+                            <span><img src="/public_admin/img/no-avartar.png" alt=""></span>Xin chào,
                         </div>
                         <ul>
                             <li><a href="user-profile.html">Thông tin tài khoản</a></li>
                             <li><a href="change-password.html">Đổi mật khẩu</a></li>
-                            <li><a href="#">Đăng xuất</a></li>
+                            <li><a href="/logout">Đăng xuất</a></li>
                         </ul>
                     </div>
                     <!-- Right Side Content / End -->
@@ -122,7 +123,7 @@
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
                         <!-- Header Widget -->
                         <div class="header-widget sign-in">
-                            <div class="show-reg-form modal-open"><a href="#">Đăng nhập</a></div>
+                            <div class="show-reg-form modal-open"><a href="/login">Đăng nhập</a></div>
                         </div>
                         <!-- Header Widget / End -->
                     </div>
@@ -153,28 +154,28 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="netabout">
                                 <a href="index.html" class="logo">
-                                    <img src="images/logo-yellow.svg" alt="netcom">
+                                    <img src="public_admin/img/logo.png" alt="netcom">
                                 </a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
+                                <p>Hãy Cùng Bất Động Sản 3 Miền Giúp Bạn Tìm Kiếm Và Lựa Chọn Bất Động Sản Tuyệt Vời Nhất Nhé !</p>
                             </div>
                             <div class="contactus">
                                 <ul>
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <p class="in-p">95 South Park Avenue, USA</p>
+                                            <p class="in-p">Long Biên - Hà Nội</p>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <p class="in-p">+456 875 369 208</p>
+                                            <p class="in-p">+84 23456789</p>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <p class="in-p ti">support@findhouses.com</p>
+                                            <p class="in-p ti">bds3mien@gmail.com</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -182,55 +183,47 @@
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="navigation">
-                                <h3>Navigation</h3>
+                                <h3>Danh Mục</h3>
                                 <div class="nav-footer">
                                     <ul>
-                                        <li><a href="index.html">Home One</a></li>
-                                        <li><a href="properties-right-sidebar.html">Properties Right</a></li>
-                                        <li><a href="properties-full-list.html">Properties List</a></li>
-                                        <li><a href="properties-details.html">Property Details</a></li>
-                                        <li class="no-mgb"><a href="agents-listing-grid.html">Agents Listing</a></li>
+                                        @foreach ($listbds as $list )
+                                        <li><a href="/lands?category={{$list->id}}">{{$list->name_lbds}}</a></li>
+                                        @endforeach
                                     </ul>
-                                    <ul class="nav-right">
-                                        <li><a href="agent-details.html">Agents Details</a></li>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                        <li class="no-mgb"><a href="contact-us.html">Contact Us</a></li>
-                                    </ul>
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="widget">
-                                <h3>Twitter Feeds</h3>
+                                <h3>Về Chúng Tôi</h3>
                                 <div class="twitter-widget contuct">
                                     <div class="twitter-area">
                                         <div class="single-item">
                                             <div class="icon-holder">
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                                <h4>about 5 days ago</h4>
+                                                <h5><a href="https://www.facebook.com/huyhoang030202/">@huyhoang</a> Hỗ trợ , tư vấn và lắng nghe</h5>
+                                                <h4>Facebook</h4>
                                             </div>
                                         </div>
                                         <div class="single-item">
                                             <div class="icon-holder">
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                                <h4>about 5 days ago</h4>
+                                                <h5><a href="https://www.facebook.com/exist.doesnt.9">@thanhdoan</a> Chuyên gia , cố vấn , tâm lí , tình cảm</h5>
+                                                <h4>Facebook</h4>
                                             </div>
                                         </div>
                                         <div class="single-item">
                                             <div class="icon-holder">
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                                <h4>about 5 days ago</h4>
+                                                <h5><a href="https://www.facebook.com/quynhnguyen.binh.336">@quynhancut</a>Hướng dẫn , lấy thông tin , chia sẻ</h5>
+                                                <h4>Facebook</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -239,8 +232,8 @@
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="newsletters">
-                                <h3>Newsletters</h3>
-                                <p>Sign Up for Our Newsletter to get Latest Updates and Offers. Subscribe to receive news in your inbox.</p>
+                                <h3>Liên Hệ</h3>
+                                <p>Hãy Để Lại Thông Tin Liên Hệ Nếu Bạn Cần Giúp Đỡ Nhé !</p>
                             </div>
                             <form class="bloq-email mailchimp form-inline" method="post">
                                 <label for="subscribeEmail" class="error"></label>
@@ -269,69 +262,6 @@
 
         <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
         <!-- END FOOTER -->
-
-        <!--register form -->
-        <div class="login-and-register-form modal">
-            <div class="main-overlay"></div>
-            <div class="main-register-holder">
-                <div class="main-register fl-wrap">
-                    <div class="close-reg"><i class="fa fa-times"></i></div>
-                    <h3>Welcome to <span>Find<strong>Houses</strong></span></h3>
-                    <div class="soc-log fl-wrap">
-                        <p>Login</p>
-                        <a href="#" class="facebook-log"><i class="fa fa-facebook-official"></i>Log in with Facebook</a>
-                        <a href="#" class="twitter-log"><i class="fa fa-twitter"></i> Log in with Twitter</a>
-                    </div>
-                    <div class="log-separator fl-wrap"><span>Or</span></div>
-                    <div id="tabs-container">
-                        <ul class="tabs-menu">
-                            <li class="current"><a href="#tab-1">Login</a></li>
-                            <li><a href="#tab-2">Register</a></li>
-                        </ul>
-                        <div class="tab">
-                            <div id="tab-1" class="tab-contents">
-                                <div class="custom-form">
-                                    <form method="post" name="registerform">
-                                        <label>Username or Email Address * </label>
-                                        <input name="email" type="text" onClick="this.select()" value="">
-                                        <label>Password * </label>
-                                        <input name="password" type="password" onClick="this.select()" value="">
-                                        <button type="submit" class="log-submit-btn"><span>Log In</span></button>
-                                        <div class="clearfix"></div>
-                                        <div class="filter-tags">
-                                            <input id="check-a" type="checkbox" name="check">
-                                            <label for="check-a">Remember me</label>
-                                        </div>
-                                    </form>
-                                    <div class="lost_password">
-                                        <a href="#">Lost Your Password?</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab">
-                                <div id="tab-2" class="tab-contents">
-                                    <div class="custom-form">
-                                        <form method="post" name="registerform" class="main-register-form" id="main-register-form2">
-                                            <label>First Name * </label>
-                                            <input name="name" type="text" onClick="this.select()" value="">
-                                            <label>Second Name *</label>
-                                            <input name="name2" type="text" onClick="this.select()" value="">
-                                            <label>Email Address *</label>
-                                            <input name="email" type="text" onClick="this.select()" value="">
-                                            <label>Password *</label>
-                                            <input name="password" type="password" onClick="this.select()" value="">
-                                            <button type="submit" class="log-submit-btn"><span>Register</span></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--register form end -->
-
         <!-- START PRELOADER -->
         <div id="preloader">
             <div id="status">
@@ -373,8 +303,6 @@
         <script src="/public_fontend/js/color-switcher.js"></script>
 
         <!-- Slider Revolution scripts -->
-        <script src="/public_fontend/jrevolution/s/jquery.themepunch.tools.min.js"></script>
-        <script src="/public_fontend/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
         <!-- MAIN JS -->
         <script src="/public_fontend/js/script.js"></script>

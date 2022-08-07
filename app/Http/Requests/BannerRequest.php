@@ -23,8 +23,41 @@ class BannerRequest extends FormRequest
      */
     public function rules()
     {
+        $rules = [];
+        $currentAction = $this->route()->getActionMethod();
+        //để lấy phương thức hiện tại
+        switch ($this->method()):
+            case 'POST':
+                switch ($currentAction) {
+                    case 'banner_add':
+                        $rules = [
+                            "name_banner" => "required",
+                            "id_news" => "required",
+                            // "images" => "required",
+                        ];
+                        break;
+                    case 'banner_update':
+                        $rules = [
+                            "name_banner" => "required",
+                            "id_news" => "required",
+                        ];
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        endswitch;
+        return $rules;
+    }
+    public function messages()
+    {
         return [
-            //
+            'name_banner.required' => 'Bạn phải nhập tên banner',
+            'id_news.required' => 'Bạn phải chọn bài viết',
+            
         ];
     }
 }
+

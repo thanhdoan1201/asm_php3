@@ -12,7 +12,7 @@ class News extends Model
 {
     use HasFactory;
     protected $table = "news";
-    protected $fillable = ['id','id_category_news','title_news','content_news','image','created_at','update_at'];
+    protected $fillable = ['id','lbds_id','title_news','content_news','images'];
 
     public function loadListWithPager($param = [])
     {
@@ -21,6 +21,16 @@ class News extends Model
         $list = $query->paginate(10);
         return $list;
     }
+    //Loc
+    public function loadListWithCategory($param = [])
+    {   $category = $_GET['category'];
+        $query = DB::table($this->table)
+            ->select($this->fillable)
+            ->where('lbds_id','=',$category);
+        $list = $query->paginate(10);
+        return $list;
+    }
+
     //phương thức thêm mới 
     public function saveNew($params)
     {
@@ -54,5 +64,9 @@ class News extends Model
             ->where('id', $params['cols']['id'])
             ->update($dataUpdate);
         return $res;
+    }
+    public static function destroy($id){
+        $delete = DB::table('news')->where('id', '=', $id)->delete();
+        return $delete;
     }
 }

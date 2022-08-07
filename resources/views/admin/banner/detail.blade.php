@@ -1,5 +1,5 @@
 @extends('templates.layoutadmin')
-@section('title', $_title)
+@section('title', $title)
 @section('content')
     <!-- Main content -->
     <section class="content appTuyenSinh">
@@ -70,59 +70,76 @@
     @endif
 
     <!-- Phần nội dung riêng của action  -->
-        <form class="form-horizontal " action="{{ route('route_BackEnd_Users_Update',['id'=>request()->route('id')]) }}" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal " action="{{ route('route_BackEnd_Banner_Update',['id'=>request()->route('id')]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="ten_de_thi" class="col-md-3 col-sm-4 control-label">Tên người dùng <span class="text-danger">(*)</span></label>
+                            <label for="ten_de_thi" class="col-md-3 col-sm-4 control-label">Tên banner <span class="text-danger">(*)</span></label>
 
                             <div class="col-md-9 col-sm-8">
-                                <input type="text" name="name" id="name" class="form-control" value="{{$objItem->name}}">
+                                <input type="text" name="name_banner" id="name_banner" class="form-control" value="{{$objItem->name_banner}}">
                                 <span id="mes_sdt"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Email <span class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="text" name="email" id="email" class="form-control" value="{{$objItem->email}}">
-                                <span id="mes_sdt"></span>
-                            </div>
+                        <label for="lbds_id" class="col-md-3 col-sm-4 control-label">Chọn bài viết<span class="text-danger">(*)</span></label>
+                        <div class="col-md-9 col-sm-8">
+                            <select class="form-control" name="id_news" id="id_news">
+                                <option value="">Chọn tin tức</option>
+                                @foreach ($list_news as $new)
+                                <option value="{{$new->id}}" <?php if ($new->id == $objItem->id_news) : ?>selected <?php endif ?>>ID:{{$new->id}} - {{$new->title_news}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Mật khẩu <span class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="password" name="password" id="password" class="form-control" value="@isset($request['password']){{ $request['password'] }}@endisset">
-                                <span id="mes_sdt"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-3 col-sm-4 control-label">Quyền <span class="text-danger">(*)</span></label>
-                            <div class="col-md-9 col-sm-8">
-                                <input type="radio" name="role" id="role" value=0>
-                                <label for="">User</label>
-                                <input type="radio" name="role" id="role" value=1>
-                                <label for="">Admin</label>
-                                <span id="mes_sdt"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-4 control-label">Ảnh</label>
+                        <div class="col-md-9 col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <img id="image" src="{{$objItem->image?''.Storage::url($objItem->image):'https://i.pinimg.com/564x/3e/67/48/3e6748785814256cd32c6c0c52aa673e.jpg'}}" value="@isset($request['image']){{ $request['image'] }}@endisset" alt="your image" style="max-width: 200px; height:100px; margin-bottom: 10px;" class="img-fluid" />
+                                    <input type="file" name="image" accept="image/*" class="form-control-file @error('image') is-invalid @enderror" id="image_1" >
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-
             </div>
-            <!-- /.box-body -->
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary"> Save</button>
-                <a href="" class="btn btn-default">Cancel</a>
-            </div>
-            <!-- /.box-footer -->
-        </form>
 
-    </section>
+        </div>
+        <!-- /.box-body -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary"> Save</button>
+            <a href="{{route('route_BackEnd_Banner_List')}}" class="btn btn-default">Cancel</a>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+
+</section>
 @endsection
 @section('script')
-    <script src="{{ asset('public_admin/default/plugins/input-mask/jquery.inputmask.js') }}"></script>
-    <script src="{{ asset('public_admin/default/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
-@endsection
+<script src="{{ asset('public_admin/default/plugins/input-mask/jquery.inputmask.js') }}"></script>
+<script src="{{ asset('public_admin/default/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+<script>
+    $(function() {
+        function readURL(input, selector) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
 
+                reader.onload = function(e) {
+                    $(selector).attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#image_1").change(function() {
+            readURL(this, '#image');
+        });
+
+    });
+</script>
+@endsection

@@ -32,6 +32,10 @@ class DatabaseSeeder extends Seeder
             'name_bds' => 'Dat nghia trang tai Long Bien',
             'location' => 'Long Bien',
             'price' => 100000000,
+            'number_bedroom'=>4,
+            'number_bathroom'=>3,
+            'area'=>'200m',
+            'images'=>'1',
             'description' => 'Mo ta test',
             'contact' => '012345678'
         ];
@@ -41,6 +45,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'anv0002@gmail.com',
             'phone' => '0123456798',
             'role' => '1',
+            'images'=>'',
             'password' => Hash::make('123456')
         ];
         DB::table('users')->insert($datauser);

@@ -33,9 +33,18 @@ class UserRequest extends FormRequest
                     case 'add':
                         $rules = [
                             "name" => "required",
-                            "email" => "required|unique:users",             
-                            "password" => "required"
+                            "email" => "required|unique:users|email",
+                            "phone" => "required",
+                            "password" => "required",
+                            "role" => "required"
                         ];
+                        break;
+                    case 'update':
+                        $rules = [
+                            "name" => "required",
+                            "phone" => "required"
+                        ];
+                        break;
                     default:
                         break;
                 }
@@ -44,14 +53,20 @@ class UserRequest extends FormRequest
                 break;
         endswitch;
         return $rules;
+
     }
     public function messages()
     {
+        
         return [
-            'name.required'=>'Bắt buộc phải nhập tên người dùng',
-            'email.required'=>'Bắt buộc phải nhập Email',
-            'email.unique'=>'Email đã được sử dụng',
-            'password.required'=>'Bắt buộc phải nhập Password'
+            'name.required' => 'Bắt buộc phải nhập tên người dùng',
+            'email.required' => 'Bắt buộc phải nhập Email',
+            'email.unique' => 'Email đã được sử dụng',
+            'email.email' => 'Email không đúng định dạng',
+            'phone.required' => 'Bắt buộc phải nhập Phone',
+            'password.required' => 'Bắt buộc phải nhập Password',
+            'role.required' => 'Bắt buộc phải phân quyền'
+            
         ];
     }
 }

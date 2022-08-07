@@ -103,7 +103,27 @@
                             <span id="mes_sdt"></span>
                         </div>
                     </div>
-                    
+                    <div class="form-group">
+                        <label for="price" class="col-md-3 col-sm-4 control-label">Diện tích(m2)<span class="text-danger">(*)</span></label>
+                        <div class="col-md-9 col-sm-8">
+                            <input type="number" name="area" id="area" class="form-control" value="@isset($request['area']){{ $request['area'] }}@endisset">
+                            <span id="mes_sdt"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-md-3 col-sm-4 control-label">Số phòng ngủ <span class="text-danger">(*)</span></label>
+                        <div class="col-md-9 col-sm-8">
+                            <input type="number" name="number_bedroom" id="number_bedroom" class="form-control" value="@isset($request['number_bedroom']){{ $request['number_bedroom'] }}@endisset">
+                            <span id="mes_sdt"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-md-3 col-sm-4 control-label">Số phòng tắm <span class="text-danger">(*)</span></label>
+                        <div class="col-md-9 col-sm-8">
+                            <input type="number" name="number_bathroom" id="number_bathroom" class="form-control" value="@isset($request['number_bathroom']){{ $request['number_bathroom'] }}@endisset">
+                            <span id="mes_sdt"></span>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="contact" class="col-md-3 col-sm-4 control-label">Liên Hệ <span class="text-danger">(*)</span></label>
                         <div class="col-md-9 col-sm-8">
@@ -130,10 +150,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="image" class="col-md-3 col-sm-4 control-label">Ảnh<span class="text-danger">(*)</span></label>
+                        <label class="col-md-3 col-sm-4 control-label">Ảnh</label>
                         <div class="col-md-9 col-sm-8">
-                            <input type="file" name="image" id="image" class="form-control" value="@isset($request['phone']){{ $request['phone'] }}@endisset">
-                            <span id="mes_sdt"></span>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <img id="images_lbds" src="https://i.pinimg.com/564x/3e/67/48/3e6748785814256cd32c6c0c52aa673e.jpg" value="@isset($request['images']){{ $request['images'] }}@endisset" alt="your image" style="max-width: 200px; height:100px; margin-bottom: 10px;" class="img-fluid" />
+                                    <input type="file" name="images_bds" accept="image/*" class="form-control-file @error('images_bds') is-invalid @enderror" id="images_bds_1" >
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -154,4 +178,23 @@
 @section('script')
 <script src="{{ asset('public_admin/default/plugins/input-mask/jquery.inputmask.js') }}"></script>
 <script src="{{ asset('public_admin/default/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+<script>
+    $(function() {
+        function readURL(input, selector) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $(selector).attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#images_bds_1").change(function() {
+            readURL(this, '#images_lbds');
+        });
+
+    });
+</script>
 @endsection

@@ -29,10 +29,16 @@ class CategorylandsRequest extends FormRequest
         switch ($this->method()):
             case 'POST':
                 switch ($currentAction) {
-                    case 'add':
+                    case 'categorylands_add':
                         $rules = [
-                            "name_lbds" => "required",    
+                            "name_lbds" => "required",
                         ];
+                        break;
+                    case 'categorylands_update':
+                        $rules = [
+                            "name_lbds" => "required",
+                        ];
+                        break;
                     default:
                         break;
                 }
@@ -45,7 +51,7 @@ class CategorylandsRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'=>'Bắt buộc phải nhập loại bất động sản',
+            'name_lbds.required' => 'Bắt buộc phải nhập loại bất động sản',
         ];
     }
 }

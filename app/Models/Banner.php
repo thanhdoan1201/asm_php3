@@ -55,4 +55,8 @@ class Banner extends Model
             ->update($dataUpdate);
         return $res;
     }
+    public static function destroy($id){
+        $delete = DB::table('banner_mkt')->where('id', '=', $id)->delete();
+        return $delete;
+    }
 }

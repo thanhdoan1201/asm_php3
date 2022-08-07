@@ -11,13 +11,22 @@ use Illuminate\Support\Facades\Session;
 class Lands extends Model
 {
     use HasFactory;
-    protected $table = "details_bds"; 
-    protected $fillable = ['id','lbds_id','name_bds', 'location', 'price', 'description', 'contact'];
+    protected $table = "details_bds";
+    protected $fillable = ['id', 'lbds_id', 'name_bds', 'location', 'price','area','number_bedroom','number_bathroom', 'description', 'contact','images'];
 
     public function loadListWithPager($param = [])
     {
         $query = DB::table($this->table)
-        ->select($this->fillable);
+            ->select($this->fillable);
+        $list = $query->paginate(10);
+        return $list;
+    }
+    // Lọc BĐS theo loại bđs
+    public function loadListWithCategory($param = [])
+    {   $category = $_GET['category'];
+        $query = DB::table($this->table)
+            ->select($this->fillable)
+            ->where('lbds_id','=',$category);
         $list = $query->paginate(10);
         return $list;
     }
@@ -54,5 +63,10 @@ class Lands extends Model
             ->where('id', $params['cols']['id'])
             ->update($dataUpdate);
         return $res;
+    }
+    //phương thức xóa
+    public static function destroy($id){
+        $delete = DB::table('details_bds')->where('id', '=', $id)->delete();
+        return $delete;
     }
 }

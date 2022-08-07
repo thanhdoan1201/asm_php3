@@ -12,7 +12,7 @@ class AdminModel extends Model
 {
     use HasFactory;
     protected $table = "users";
-    protected $fillable = ['id','name','email','phone','role'];
+    protected $fillable = ['id','name','email','phone','role','images'];
 
     public function loadListWithPager($param = [])
     {
@@ -56,5 +56,9 @@ class AdminModel extends Model
             ->where('id', $params['cols']['id'])
             ->update($dataUpdate);
         return $res;
+    }
+    public static function destroy($id){
+        $delete = DB::table('users')->where('id', '=', $id)->delete();
+        return $delete;
     }
 }

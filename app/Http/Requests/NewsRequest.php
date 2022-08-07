@@ -23,8 +23,44 @@ class NewsRequest extends FormRequest
      */
     public function rules()
     {
+        $rules = [];
+        $currentAction = $this->route()->getActionMethod();
+        //để lấy phương thức hiện tại
+        switch ($this->method()):
+            case 'POST':
+                switch ($currentAction) {
+                    case 'news_add':
+                        $rules = [
+                            "lbds_id" => "required",
+                            "title_news" => "required",
+                            "content_news" => "required",
+                            // "images" => "required",
+                        ];
+                        break;
+                    case 'news_update':
+                        $rules = [
+                            "lbds_id" => "required",
+                            "title_news" => "required",
+                            "content_news" => "required",
+                            // "images" => "required",
+                        ];
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        endswitch;
+        return $rules;
+    }
+    public function messages()
+    {
+        
         return [
-            //
+            'lbds_id.required' => 'Bắt buộc phải chọn danh mục tin tức',
+            'title_news.required' => 'Bắt buộc phải nhập Tiêu đề',
+            'content_news.required' => 'Bắt buộc phải nhập nội dung bài viết',          
         ];
     }
 }

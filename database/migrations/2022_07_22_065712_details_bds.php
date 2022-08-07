@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('name_bds');
             $table->string('location');
             $table->string('price');
+            $table->string('number_bedroom');
+            $table->string('number_bathroom');
+            $table->string('area');
+            $table->string('images');
             $table->string('description',1000);
             $table->string('contact');
 
